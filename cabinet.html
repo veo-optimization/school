@@ -11,7 +11,27 @@
         <header><h1>Кабінет користувача</h1></header>
         <main>
             <div id="user-info"></div>
-            <button onclick="logout()">Вийти</button>
+            <form id="edit-form" style="display:none; max-width:400px; margin:0 auto;">
+                <label>ПІБ:<br><input type="text" id="edit-name" required></label><br>
+                <label>E-mail:<br><input type="email" id="edit-email" required></label><br>
+                <label>Роль:<br>
+                    <select id="edit-role" required>
+                        <option value="teacher">Вчитель</option>
+                        <option value="assistant">Асистент</option>
+                        <option value="head">Завуч</option>
+                        <option value="director">Директор</option>
+                        <option value="logoped">Логопед</option>
+                        <option value="psychologist">Психолог</option>
+                    </select>
+                </label><br>
+                <label>Новий пароль:<br><input type="password" id="edit-password" placeholder="Залиште порожнім, якщо не змінюєте"></label><br>
+                <button type="submit">Зберегти зміни</button>
+                <button type="button" onclick="cancelEdit()">Скасувати</button>
+            </form>
+            <div id="cabinet-actions">
+                <button onclick="showEditForm()">Редагувати профіль</button>
+                <button onclick="logout()">Вийти</button>
+            </div>
         </main>
     </div>
     <script src="cabinet.js"></script>
