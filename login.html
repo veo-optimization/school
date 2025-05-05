@@ -5,47 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вхід / Реєстрація</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header><h1>Вхід / Реєстрація</h1></header>
-        <main>
-            <div id="login-section" class="auth-form">
-                <h2>Вхід</h2>
-                <form id="login-form">
-                    <label for="login-email">E-mail</label>
-                    <input type="email" id="login-email" placeholder="E-mail" required autocomplete="username">
-                    <label for="login-password">Пароль</label>
-                    <input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
-                    <button type="submit">Увійти</button>
-                </form>
-                <p>Ще не маєте акаунта? <a href="#" onclick="showRegister()">Зареєструватися</a></p>
-            </div>
-            <div id="register-section" class="auth-form" style="display:none;">
-                <h2>Реєстрація</h2>
-                <form id="register-form">
-                    <label for="reg-name">ПІБ</label>
-                    <input type="text" id="reg-name" placeholder="ПІБ" required autocomplete="name">
-                    <label for="reg-email">E-mail</label>
-                    <input type="email" id="reg-email" placeholder="E-mail" required autocomplete="email">
-                    <label for="reg-password">Пароль</label>
-                    <input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
-                    <label for="reg-role">Роль</label>
-                    <select id="reg-role" required>
-                        <option value="">Оберіть роль</option>
-                        <option value="teacher">Вчитель</option>
-                        <option value="assistant">Асистент</option>
-                        <option value="head">Завуч</option>
-                        <option value="director">Директор</option>
-                        <option value="logoped">Логопед</option>
-                        <option value="psychologist">Психолог</option>
-                    </select>
-                    <button type="submit">Зареєструватися</button>
-                </form>
-                <p>Вже маєте акаунт? <a href="#" onclick="showLogin()">Увійти</a></p>
-            </div>
-        </main>
+    <button class="hamburger" id="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">Меню</div>
+        <nav class="sidebar-nav">
+            <a href="index.html"><i class="fa-solid fa-house"></i>Головна</a>
+            <a href="attendance.html"><i class="fa-solid fa-book-open"></i>Відвідування</a>
+            <a href="canteen.html"><i class="fa-solid fa-utensils"></i>Їдальня</a>
+            <a href="schedule.html"><i class="fa-solid fa-calendar-days"></i>Розклад</a>
+            <a href="oop.html"><i class="fa-solid fa-child-reaching"></i>ОПП</a>
+            <a href="analytics.html"><i class="fa-solid fa-chart-bar"></i>Аналітика</a>
+            <a href="docs.html"><i class="fa-solid fa-folder-open"></i>Документація</a>
+            <a href="users.html"><i class="fa-solid fa-users"></i>Користувачі</a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i>Налаштування</a>
+            <a href="archive.html"><i class="fa-solid fa-box-archive"></i>Архів</a>
+            <a href="feedback.html"><i class="fa-solid fa-comment-dots"></i>Зворотній зв'язок</a>
+        </nav>
+    </aside>
+    <div class="with-sidebar">
+        <div class="container">
+            <header><h1>Вхід / Реєстрація</h1></header>
+            <main>
+                <div id="login-section" class="auth-form">
+                    <h2>Вхід</h2>
+                    <form id="login-form">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" placeholder="E-mail" required autocomplete="username">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
+                        <button type="submit">Увійти</button>
+                    </form>
+                    <p>Ще не маєте акаунта? <a href="#" onclick="showRegister()">Зареєструватися</a></p>
+                </div>
+                <div id="register-section" class="auth-form" style="display:none;">
+                    <h2>Реєстрація</h2>
+                    <form id="register-form">
+                        <label for="reg-name">ПІБ</label>
+                        <input type="text" id="reg-name" placeholder="ПІБ" required autocomplete="name">
+                        <label for="reg-email">E-mail</label>
+                        <input type="email" id="reg-email" placeholder="E-mail" required autocomplete="email">
+                        <label for="reg-password">Пароль</label>
+                        <input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
+                        <label for="reg-role">Роль</label>
+                        <select id="reg-role" required>
+                            <option value="">Оберіть роль</option>
+                            <option value="teacher">Вчитель</option>
+                            <option value="assistant">Асистент</option>
+                            <option value="head">Завуч</option>
+                            <option value="director">Директор</option>
+                            <option value="logoped">Логопед</option>
+                            <option value="psychologist">Психолог</option>
+                        </select>
+                        <button type="submit">Зареєструватися</button>
+                    </form>
+                    <p>Вже маєте акаунт? <a href="#" onclick="showLogin()">Увійти</a></p>
+                </div>
+            </main>
+        </div>
     </div>
     <script src="login.js"></script>
+    <script>
+    // Мобільне меню
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    hamburger.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+        if(window.innerWidth <= 900 && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        }
+    });
+    </script>
 </body>
 </html> 
