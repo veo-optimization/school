@@ -8,41 +8,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <nav class="top-nav">
-                <a href="index.html" class="active"><i class="fa-solid fa-house"></i>Головна</a>
-                <a href="attendance.html"><i class="fa-solid fa-book-open"></i>Відвідування</a>
-                <a href="canteen.html"><i class="fa-solid fa-utensils"></i>Їдальня</a>
-                <a href="schedule.html"><i class="fa-solid fa-calendar-days"></i>Розклад</a>
-                <a href="oop.html"><i class="fa-solid fa-child-reaching"></i>ОПП</a>
-                <a href="analytics.html"><i class="fa-solid fa-chart-bar"></i>Аналітика</a>
-                <a href="docs.html"><i class="fa-solid fa-folder-open"></i>Документація</a>
-                <a href="users.html"><i class="fa-solid fa-users"></i>Користувачі</a>
-                <a href="settings.html"><i class="fa-solid fa-gear"></i>Налаштування</a>
-                <a href="archive.html"><i class="fa-solid fa-box-archive"></i>Архів</a>
-                <a href="feedback.html"><i class="fa-solid fa-comment-dots"></i>Зворотній зв'язок</a>
-            </nav>
-            <h1>Шкільна електронна система</h1>
-            <p class="subtitle">Зручний інструмент для педагогів та адміністрації</p>
-            <div id="auth-block" style="margin-top: 10px;"></div>
-        </header>
-        <main>
-            <div class="main-menu">
-                <a href="news.html" class="menu-tile"><i class="fa-solid fa-bullhorn"></i><span>Головна</span></a>
-                <a href="attendance.html" class="menu-tile"><i class="fa-solid fa-book-open"></i><span>Журнал відвідування</span></a>
-                <a href="canteen.html" class="menu-tile"><i class="fa-solid fa-utensils"></i><span>Їдальня</span></a>
-                <a href="schedule.html" class="menu-tile"><i class="fa-solid fa-calendar-days"></i><span>Графік / Розклад</span></a>
-                <a href="oop.html" class="menu-tile"><i class="fa-solid fa-child-reaching"></i><span>ОПП</span></a>
-                <a href="analytics.html" class="menu-tile"><i class="fa-solid fa-chart-bar"></i><span>Аналітика</span></a>
-                <a href="docs.html" class="menu-tile"><i class="fa-solid fa-folder-open"></i><span>Документація</span></a>
-                <a href="users.html" class="menu-tile"><i class="fa-solid fa-users"></i><span>Користувачі</span></a>
-                <a href="settings.html" class="menu-tile"><i class="fa-solid fa-gear"></i><span>Налаштування</span></a>
-                <a href="archive.html" class="menu-tile"><i class="fa-solid fa-box-archive"></i><span>Архів</span></a>
-                <a href="feedback.html" class="menu-tile"><i class="fa-solid fa-comment-dots"></i><span>Зворотній зв'язок</span></a>
-            </div>
-        </main>
+    <button class="hamburger" id="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">Меню</div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active"><i class="fa-solid fa-house"></i>Головна</a>
+            <a href="attendance.html"><i class="fa-solid fa-book-open"></i>Відвідування</a>
+            <a href="canteen.html"><i class="fa-solid fa-utensils"></i>Їдальня</a>
+            <a href="schedule.html"><i class="fa-solid fa-calendar-days"></i>Розклад</a>
+            <a href="oop.html"><i class="fa-solid fa-child-reaching"></i>ОПП</a>
+            <a href="analytics.html"><i class="fa-solid fa-chart-bar"></i>Аналітика</a>
+            <a href="docs.html"><i class="fa-solid fa-folder-open"></i>Документація</a>
+            <a href="users.html"><i class="fa-solid fa-users"></i>Користувачі</a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i>Налаштування</a>
+            <a href="archive.html"><i class="fa-solid fa-box-archive"></i>Архів</a>
+            <a href="feedback.html"><i class="fa-solid fa-comment-dots"></i>Зворотній зв'язок</a>
+        </nav>
+    </aside>
+    <div class="with-sidebar">
+        <div class="container">
+            <header>
+                <h1>Шкільна електронна система</h1>
+                <p class="subtitle">Зручний інструмент для педагогів та адміністрації</p>
+                <div id="auth-block" style="margin-top: 10px;"></div>
+            </header>
+            <main>
+                <div class="main-menu">
+                    <a href="news.html" class="menu-tile"><i class="fa-solid fa-bullhorn"></i><span>Головна</span></a>
+                    <a href="attendance.html" class="menu-tile"><i class="fa-solid fa-book-open"></i><span>Журнал відвідування</span></a>
+                    <a href="canteen.html" class="menu-tile"><i class="fa-solid fa-utensils"></i><span>Їдальня</span></a>
+                    <a href="schedule.html" class="menu-tile"><i class="fa-solid fa-calendar-days"></i><span>Графік / Розклад</span></a>
+                    <a href="oop.html" class="menu-tile"><i class="fa-solid fa-child-reaching"></i><span>ОПП</span></a>
+                    <a href="analytics.html" class="menu-tile"><i class="fa-solid fa-chart-bar"></i><span>Аналітика</span></a>
+                    <a href="docs.html" class="menu-tile"><i class="fa-solid fa-folder-open"></i><span>Документація</span></a>
+                    <a href="users.html" class="menu-tile"><i class="fa-solid fa-users"></i><span>Користувачі</span></a>
+                    <a href="settings.html" class="menu-tile"><i class="fa-solid fa-gear"></i><span>Налаштування</span></a>
+                    <a href="archive.html" class="menu-tile"><i class="fa-solid fa-box-archive"></i><span>Архів</span></a>
+                    <a href="feedback.html" class="menu-tile"><i class="fa-solid fa-comment-dots"></i><span>Зворотній зв'язок</span></a>
+                </div>
+            </main>
+        </div>
     </div>
     <script src="main-auth.js"></script>
+    <script>
+    // Мобільне меню
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    hamburger.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+    });
+    // Закриття меню при кліку поза ним (на мобільному)
+    document.addEventListener('click', function(e) {
+        if(window.innerWidth <= 900 && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        }
+    });
+    </script>
 </body>
 </html> 

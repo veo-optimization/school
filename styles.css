@@ -248,9 +248,12 @@ footer {
     align-items: center;
     background: rgba(36,129,204,0.10);
     border-radius: 8px;
-    padding: 8px 0 4px 0;
+    padding: 8px 16px 4px 16px;
     margin-bottom: 12px;
     overflow-x: auto;
+    flex-wrap: wrap;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 .top-nav a {
     display: flex;
@@ -276,11 +279,28 @@ footer {
     .top-nav {
         font-size: 0.98em;
         gap: 4px;
-        padding: 6px 0 2px 0;
+        padding: 6px 4px 2px 4px;
     }
     .top-nav a {
         padding: 5px 8px;
         font-size: 0.98em;
+    }
+}
+@media (min-width: 900px) {
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 6px;
+        column-gap: 10px;
+        padding-left: 24px;
+        padding-right: 24px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .top-nav a {
+        min-width: 120px;
+        justify-content: flex-start;
     }
 }
 
@@ -315,21 +335,114 @@ footer {
     margin-bottom: 6px;
 }
 
-/* --- ГОРИЗОНТАЛЬНЕ МЕНЮ у два рядки на ПК --- */
-@media (min-width: 900px) {
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        row-gap: 6px;
-        column-gap: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
+/************ САЙДБАР ************/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: var(--tg-theme-button-color);
+    color: #fff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 0 0 0;
+    box-shadow: 2px 0 16px rgba(36,129,204,0.08);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.sidebar .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 12px;
+}
+.sidebar .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    background: none;
+    border-radius: 6px;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-size: 1.08em;
+    font-weight: 500;
+    transition: background 0.18s, color 0.18s;
+}
+.sidebar .sidebar-nav a.active,
+.sidebar .sidebar-nav a:hover {
+    background: #fff;
+    color: var(--tg-theme-link-color);
+}
+.sidebar .sidebar-nav i {
+    font-size: 1.2em;
+}
+
+.sidebar .sidebar-logo {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+/* Контент з урахуванням сайдбару */
+.with-sidebar {
+    margin-left: 220px;
+    transition: margin 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/************ ГАМБУРГЕР ************/
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 2001;
+    width: 38px;
+    height: 38px;
+    background: var(--tg-theme-link-color);
+    border: none;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(36,129,204,0.10);
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/************ МОБІЛЬНЕ МЕНЮ ************/
+@media (max-width: 900px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 80vw;
+        max-width: 320px;
+        box-shadow: 2px 0 24px rgba(36,129,204,0.13);
+        padding-top: 16px;
     }
-    .top-nav a {
-        min-width: 120px;
-        justify-content: flex-start;
+    .sidebar.open {
+        transform: translateX(0);
     }
+    .with-sidebar {
+        margin-left: 0;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+/************ СХОВАТИ СТАРЕ МЕНЮ ************/
+.top-nav {
+    display: none !important;
 } 
