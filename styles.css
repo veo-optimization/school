@@ -168,7 +168,7 @@ footer {
 
 .subtitle {
     font-size: 1.1em;
-    color: var(--tg-theme-hint-color);
+    color: #fff;
     margin-top: 8px;
     margin-bottom: 10px;
 }
