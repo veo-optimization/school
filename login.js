@@ -37,7 +37,8 @@ if (regForm) {
                 alert('Користувач з таким e-mail вже існує!');
                 return;
             }
-            users.push({ name, email, password, role });
+            // Зберігаємо масив ролей і ПІБ, які повертає GAS
+            users.push({ name: data.name || name, email, password, roles: data.roles || [], role });
             localStorage.setItem('users', JSON.stringify(users));
             alert('Реєстрація успішна! Тепер увійдіть.');
             showLogin();
