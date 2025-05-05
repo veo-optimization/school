@@ -30,6 +30,12 @@
             <header><h1>Зворотній зв'язок</h1></header>
             <main>
                 <p>Тут можна буде повідомити про баг, запропонувати ідею або написати в техпідтримку.</p>
+                <div id="email-auth">
+                    <label for="user-email">Введіть ваш Google-емейл:</label>
+                    <input type="email" id="user-email" required>
+                    <button onclick="checkEmail()">Перевірити доступ</button>
+                    <div id="access-result"></div>
+                </div>
             </main>
         </div>
     </div>
@@ -47,6 +53,32 @@
             }
         }
     });
+
+    function checkEmail() {
+        const email = document.getElementById('user-email').value.trim().toLowerCase();
+        if (!email || !email.includes('@')) {
+            alert('Введіть коректний емейл!');
+            return;
+        }
+        fetch('https://script.google.com/macros/s/AKfycbz_yzhjspXaf5HFCMxwdca0VMe1Id9TWWwGac7WazCOJNWUIADPA8Z-pZDYQT2jqq70Iw/exec', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.access) {
+                localStorage.setItem('currentUserEmail', email);
+                document.getElementById('access-result').innerHTML = `<span style="color:green;">Доступ дозволено! Ваша роль: ${data.role}</span>`;
+                // Далі відкриваєте функціонал сайту
+            } else {
+                document.getElementById('access-result').innerHTML = `<span style="color:red;">Доступ заборонено. Зверніться до адміністратора.</span>`;
+            }
+        })
+        .catch(err => {
+            document.getElementById('access-result').innerHTML = `<span style="color:red;">Помилка перевірки: ${err.message}</span>`;
+        });
+    }
     </script>
 </body>
 </html> 
