@@ -4,10 +4,16 @@ function renderUserInfo() {
         window.location.href = 'login.html';
         return;
     }
+    let rolesHtml = '';
+    if (user.roles && Array.isArray(user.roles) && user.roles.length > 0) {
+        rolesHtml = user.roles.map(roleName).join(', ');
+    } else {
+        rolesHtml = roleName(user.role);
+    }
     document.getElementById('user-info').innerHTML = `
         <p><b>ПІБ:</b> ${user.name}</p>
         <p><b>E-mail:</b> ${user.email}</p>
-        <p><b>Роль:</b> ${roleName(user.role)}</p>
+        <p><b>Ролі:</b> ${rolesHtml}</p>
     `;
     document.getElementById('cabinet-actions').style.display = 'block';
     document.getElementById('edit-form').style.display = 'none';
@@ -21,6 +27,13 @@ function roleName(role) {
         case 'director': return 'Директор';
         case 'logoped': return 'Логопед';
         case 'psychologist': return 'Психолог';
+        case 'Соцпедагог': return 'Соцпедагог';
+        case 'Медсестра': return 'Медсестра';
+        case 'Адміністратор': return 'Адміністратор';
+        case 'Класний керівник': return 'Класний керівник';
+        case 'IT-фахівець': return 'IT-фахівець';
+        case 'Бібліотекар': return 'Бібліотекар';
+        case 'Гість': return 'Гість';
         default: return role;
     }
 }
