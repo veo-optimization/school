@@ -10,21 +10,27 @@
     <div class="container">
         <header><h1>Вхід / Реєстрація</h1></header>
         <main>
-            <div id="login-section">
+            <div id="login-section" class="auth-form">
                 <h2>Вхід</h2>
                 <form id="login-form">
-                    <input type="email" id="login-email" placeholder="E-mail" required><br>
-                    <input type="password" id="login-password" placeholder="Пароль" required><br>
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="E-mail" required autocomplete="username">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
                     <button type="submit">Увійти</button>
                 </form>
                 <p>Ще не маєте акаунта? <a href="#" onclick="showRegister()">Зареєструватися</a></p>
             </div>
-            <div id="register-section" style="display:none;">
+            <div id="register-section" class="auth-form" style="display:none;">
                 <h2>Реєстрація</h2>
                 <form id="register-form">
-                    <input type="text" id="reg-name" placeholder="ПІБ" required><br>
-                    <input type="email" id="reg-email" placeholder="E-mail" required><br>
-                    <input type="password" id="reg-password" placeholder="Пароль" required><br>
+                    <label for="reg-name">ПІБ</label>
+                    <input type="text" id="reg-name" placeholder="ПІБ" required autocomplete="name">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" placeholder="E-mail" required autocomplete="email">
+                    <label for="reg-password">Пароль</label>
+                    <input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
+                    <label for="reg-role">Роль</label>
                     <select id="reg-role" required>
                         <option value="">Оберіть роль</option>
                         <option value="teacher">Вчитель</option>
@@ -33,7 +39,7 @@
                         <option value="director">Директор</option>
                         <option value="logoped">Логопед</option>
                         <option value="psychologist">Психолог</option>
-                    </select><br>
+                    </select>
                     <button type="submit">Зареєструватися</button>
                 </form>
                 <p>Вже маєте акаунт? <a href="#" onclick="showLogin()">Увійти</a></p>
