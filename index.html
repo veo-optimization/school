@@ -3,37 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Система спостереження за учнями з ООП</title>
+    <title>Шкільна система</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Система спостереження за учнями з ООП</h1>
-            <div class="auth-section">
-                <input type="password" id="password" placeholder="Введіть пароль">
-                <button onclick="checkAuth()">Увійти</button>
-            </div>
+            <h1>Шкільна електронна система</h1>
+            <p class="subtitle">Зручний інструмент для педагогів та адміністрації</p>
         </header>
-
         <main>
-            <div class="search-section">
-                <input type="text" id="search" placeholder="Пошук за прізвищем">
-                <select id="class-filter">
-                    <option value="">Всі класи</option>
-                    <!-- Класи будуть додані через JavaScript -->
-                </select>
-            </div>
-
-            <div id="students-list">
-                <!-- Список учнів буде додано через JavaScript -->
+            <div class="main-menu">
+                <a href="news.html" class="menu-tile"><i class="fa-solid fa-bullhorn"></i><span>Головна</span></a>
+                <a href="attendance.html" class="menu-tile"><i class="fa-solid fa-book-open"></i><span>Журнал відвідування</span></a>
+                <a href="canteen.html" class="menu-tile"><i class="fa-solid fa-utensils"></i><span>Їдальня</span></a>
+                <a href="schedule.html" class="menu-tile"><i class="fa-solid fa-calendar-days"></i><span>Графік / Розклад</span></a>
+                <a href="oop.html" class="menu-tile"><i class="fa-solid fa-child-reaching"></i><span>ОПП</span></a>
+                <a href="analytics.html" class="menu-tile"><i class="fa-solid fa-chart-bar"></i><span>Аналітика</span></a>
+                <a href="docs.html" class="menu-tile"><i class="fa-solid fa-folder-open"></i><span>Документація</span></a>
+                <a href="users.html" class="menu-tile"><i class="fa-solid fa-users"></i><span>Користувачі</span></a>
+                <a href="settings.html" class="menu-tile"><i class="fa-solid fa-gear"></i><span>Налаштування</span></a>
+                <a href="archive.html" class="menu-tile"><i class="fa-solid fa-box-archive"></i><span>Архів</span></a>
+                <a href="feedback.html" class="menu-tile"><i class="fa-solid fa-comment-dots"></i><span>Зворотній зв'язок</span></a>
             </div>
         </main>
-
-        <footer>
-            <div id="access-info"></div>
-        </footer>
     </div>
-    <script src="script.js"></script>
 </body>
 </html> 
