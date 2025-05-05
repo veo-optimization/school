@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система спостереження за учнями з ООП</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Система спостереження за учнями з ООП</h1>
+            <div class="auth-section">
+                <input type="password" id="password" placeholder="Введіть пароль">
+                <button onclick="checkAuth()">Увійти</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <input type="text" id="search" placeholder="Пошук за прізвищем">
+                <select id="class-filter">
+                    <option value="">Всі класи</option>
+                    <!-- Класи будуть додані через JavaScript -->
+                </select>
+            </div>
+
+            <div id="students-list">
+                <!-- Список учнів буде додано через JavaScript -->
+            </div>
+        </main>
+
+        <footer>
+            <div id="access-info"></div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
