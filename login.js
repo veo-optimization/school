@@ -20,15 +20,31 @@ if (regForm) {
             alert('Заповніть всі поля!');
             return;
         }
-        let users = JSON.parse(localStorage.getItem('users') || '[]');
-        if (users.find(u => u.email === email)) {
-            alert('Користувач з таким e-mail вже існує!');
-            return;
-        }
-        users.push({ name, email, password, role });
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('Реєстрація успішна! Тепер увійдіть.');
-        showLogin();
+        // Перевірка емейлу через Google Apps Script Web API
+        fetch('https://script.google.com/macros/s/AKfycbz_yzhjspXaf5HFCMxwdca0VMe1Id9TWWwGac7WazCOJNWUIADPA8Z-pZDYQT2jqq70Iw/exec', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (!data.access) {
+                alert('Реєстрація дозволена лише для емейлів, які є у списку доступу. Зверніться до адміністратора.');
+                return;
+            }
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (users.find(u => u.email === email)) {
+                alert('Користувач з таким e-mail вже існує!');
+                return;
+            }
+            users.push({ name, email, password, role });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Реєстрація успішна! Тепер увійдіть.');
+            showLogin();
+        })
+        .catch(err => {
+            alert('Помилка перевірки доступу: ' + err.message);
+        });
     }
 }
 
