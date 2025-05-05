@@ -76,7 +76,8 @@
             }
         })
         .catch(err => {
-            document.getElementById('access-result').innerHTML = `<span style="color:red;">Помилка перевірки: ${err.message}</span>`;
+            console.error('Помилка перевірки доступу:', err);
+            alert('Не вдалося перевірити доступ до сервера. Спробуйте ще раз або зверніться до адміністратора.');
         });
     }
     </script>
