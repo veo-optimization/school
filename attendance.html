@@ -134,10 +134,10 @@
         }
         .burger span {
             display: block;
-            width: 22px;
-            height: 3px;
+            width: 26px;
+            height: 4px;
             background: #fff;
-            margin: 4px 0;
+            margin: 5px 0;
             border-radius: 2px;
             transition: 0.2s;
         }
@@ -179,12 +179,18 @@
             z-index: 2002;
         }
         @media (max-width: 900px) {
-            .sidebar .close-btn { display: block; }
+            .sidebar .close-btn { display: block; right: 18px; left: auto; }
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
+    <button class="burger" id="burger-menu" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-sidebar" aria-label="Закрити меню">&#8592;</button>
         <div class="sidebar-logo">Меню</div>
         <nav class="sidebar-nav">
             <a href="index.html">Головна</a>
@@ -215,5 +221,26 @@
         </main>
     </div>
     <script src="attendance.js"></script>
+    <script>
+    // Мобільне бургер-меню
+    const burger = document.getElementById('burger-menu');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    if (burger && sidebar && closeBtn) {
+        burger.addEventListener('click', function() {
+            sidebar.classList.add('open');
+        });
+        closeBtn.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+        });
+        document.addEventListener('click', function(e) {
+            if(window.innerWidth <= 900 && sidebar.classList.contains('open')) {
+                if (!sidebar.contains(e.target) && !burger.contains(e.target)) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        });
+    }
+    </script>
 </body>
 </html> 
