@@ -62,9 +62,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.absent-checkbox').forEach(cb => {
             cb.addEventListener('change', function() {
                 const row = this.getAttribute('data-row');
-                // Якщо вибрано хоча б одну відсутність — знімаємо присутність
+                // Якщо вибрано цю відсутність — знімаємо присутність і всі інші відсутності
                 if (this.checked) {
                     document.querySelector(`.present-checkbox[data-row='${row}']`).checked = false;
+                    // Зняти всі інші відсутності
+                    document.querySelectorAll(`.absent-checkbox[data-row='${row}']`).forEach(abs => {
+                        if (abs !== this) {
+                            abs.checked = false;
+                            abs.closest('.absent-label').classList.remove('selected');
+                        }
+                    });
                     this.closest('.absent-label').classList.add('selected');
                 } else {
                     this.closest('.absent-label').classList.remove('selected');
