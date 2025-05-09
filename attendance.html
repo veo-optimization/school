@@ -5,17 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Відвідування</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #f7f7fb;
+        }
+        .attendance-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin-top: 18px;
+        }
+        .attendance-table th, .attendance-table td {
+            padding: 10px 8px;
+            text-align: center;
+        }
+        .present-checkbox {
+            accent-color: #22c55e;
+            border: 1.5px solid #22c55e;
+            border-radius: 6px;
+            width: 22px;
+            height: 22px;
+            outline: none;
+            box-shadow: 0 0 0 1.5px #22c55e;
+        }
+        .present-checkbox:checked {
+            box-shadow: 0 0 0 2.5px #22c55e;
+        }
+        .absent-group {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .absent-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 1.5px solid #ef4444;
+            border-radius: 6px;
+            background: #fff;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .absent-checkbox.selected {
+            background: #ef4444;
+            color: #fff;
+        }
+        .absent-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1.5px solid #ef4444;
+            margin: 0 2px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            background: #fff;
+            transition: background 0.2s, color 0.2s;
+        }
+        .absent-label.selected {
+            background: #ef4444;
+            color: #fff;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: #7c3aed;
+            color: #fff;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 24px 0 0 0;
+            box-shadow: 2px 0 16px rgba(36,129,204,0.08);
+        }
+        .sidebar .sidebar-logo {
+            font-size: 1.3em;
+            font-weight: 700;
+            padding: 0 24px 18px 24px;
+        }
+        .sidebar .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 12px;
+        }
+        .sidebar .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            background: none;
+            border-radius: 6px;
+            padding: 10px 12px;
+            text-decoration: none;
+            font-size: 1.08em;
+            font-weight: 500;
+            transition: background 0.18s, color 0.18s;
+        }
+        .sidebar .sidebar-nav a.active,
+        .sidebar .sidebar-nav a:hover {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+        .main-content {
+            margin-left: 240px;
+            padding: 32px 18px 18px 18px;
+            max-width: 1100px;
+        }
+        @media (max-width: 900px) {
+            .sidebar { position: static; width: 100%; height: auto; box-shadow: none; }
+            .main-content { margin-left: 0; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <aside class="sidebar">
+        <div class="sidebar-logo">Меню</div>
+        <nav class="sidebar-nav">
+            <a href="index.html">Головна</a>
+            <a href="attendance.html" class="active">Відвідування</a>
+            <a href="canteen.html">Їдальня</a>
+            <a href="oop.html">ООП</a>
+            <a href="analytics.html">Аналітика</a>
+            <a href="users.html">Користувачі</a>
+            <a href="settings.html">Налаштування</a>
+            <a href="archive.html">Архів</a>
+            <a href="feedback.html">Зворотній зв'язок</a>
+        </nav>
+    </aside>
+    <div class="main-content">
         <header><h1>Відвідування класу</h1></header>
         <main>
             <label>Дата: <input type="date" id="attendance-date"></label>
             <label>Клас: <select id="attendance-class"></select></label>
             <button id="mark-all-present">Відмітити всіх присутніми</button>
             <form id="attendance-form">
-                <table id="students-table">
-                    <thead><tr><th>ПІБ учня</th><th>Присутній</th></tr></thead>
+                <table class="attendance-table" id="students-table">
+                    <thead><tr><th>ПІБ учня</th><th>Присутній</th><th colspan="3">Відсутній</th></tr><tr><th></th><th></th><th>ПП</th><th>БП</th><th>ХВ</th></tr></thead>
                     <tbody></tbody>
                 </table>
                 <button type="submit">Зберегти</button>
